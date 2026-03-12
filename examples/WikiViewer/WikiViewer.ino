@@ -3,7 +3,10 @@
 #include <Adafruit_ILI9341.h>
 #include <Adafruit_ST7789.h>
 #include <lvgl.h>
+#include <WiFi.h>
+
 #include <yri_microscope.h>
+#include "secrets_local.h"
 
 //SPI pins
 
@@ -143,12 +146,30 @@ static void initBoardDisplayAndLvgl() {
   );
 }
 
+void connectWifi(){
+  const char* ssid = WIFI_SSID;
+  const char* pass = WIFI_PASS;
+
+  Serial.println("Connecting WiFi...");
+  WiFi.begin(ssid,pass);
+
+  while(WiFi.status() != WL_CONNECTED){
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println();
+  Serial.println("WiFi connected");
+  Serial.println(WiFi.localIP());
+}
+
 
 void setup() {
     Serial.begin(115200);
     delay(500);
     Serial.println();
     Serial.println("Microscope dual-screen test starting...");
+    
+    connectWifi();
 
     initBoardDisplayAndLvgl();
 

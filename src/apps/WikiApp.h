@@ -2,6 +2,7 @@
 
 #include "../core/App.h"
 #include "../ui/widgets/TextView.h"
+#include "../net/HttpClient.h"
 
 class WikiApp : public App{
   public:
@@ -16,4 +17,7 @@ class WikiApp : public App{
     TextView _view;
     String _text = "Microscope wiki app";
     bool _created = false;
+
+    HttpClient _http;
+    bool _loaded = false;
 };

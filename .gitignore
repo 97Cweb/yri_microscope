@@ -1,3 +1,5 @@
+examples/**/secrets_local.h
+
 # OS
 .DS_Store
 Thumbs.db

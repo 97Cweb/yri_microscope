@@ -10,3 +10,5 @@
 #include "ui/widgets/TextView.h"
 
 #include "apps/WikiApp.h"
+
+#include "net/HttpClient.h"
