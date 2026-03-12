@@ -1,8 +1,16 @@
 #pragma once
 
+class Microscope;
+
 class App{
   public:
     virtual ~App() = default;
-    virtual bool begin() = 0;
-    virtual void update() = 0;
+
+    virtual const char* appId() const = 0;
+
+    virtual bool begin(Microscope& m) = 0;
+    virtual void update(Microscope& m) = 0;
+
+    virtual void onActivate(Microscope& m){}
+    virtual void onDeactivate(Microscope& m){}
 };
